@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+<nav> <a href="/cuisine/add">Add Cuisine</a></nav>
+
+<p th:unless="${cuisines} and ${cuisines.size()}">no cuisines :(</p>
+
+<ul>
+    <li th:each="cuisine: ${cuisines}"><div th:text="${cuisine.name}"></div></li>
+</ul>
+
+</body>
+</html>
