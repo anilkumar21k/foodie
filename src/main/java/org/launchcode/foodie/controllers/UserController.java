@@ -88,7 +88,7 @@ public class UserController {
                 Cookie c = new Cookie("user", user.getUsername());
                 c.setPath("/");
                 response.addCookie(c);
-                return "redirect:/cheese";
+                return "redirect:/restaurant";
 
             } else {
                 model.addAttribute("message","Invalid Password");
@@ -100,12 +100,14 @@ public class UserController {
         }
 
     @RequestMapping(value = "logout")
-    public String logout(HttpServletRequest request) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookies = request.getCookies();
-        for (Cookie c : cookies) {
-            c.setMaxAge(0);
-            c.setPath("/");
-            response.addCookie(c);
+        if(cookies != null) {
+            for (Cookie c : cookies) {
+                c.setMaxAge(0);
+                c.setPath("/");
+                response.addCookie(c);
+            }
         }
         return  "user/login";
     }
