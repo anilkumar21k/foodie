@@ -3,6 +3,7 @@ package org.launchcode.foodie.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.launchcode.foodie.models.data.RestaurantDao;
 import java.util.List;
 
 
@@ -60,4 +61,8 @@ public class Restaurant {
     public void setCuisine(Cuisine qisine) {
         this.cuisine = qisine;
     }
+
+    //public Restaurant getByCuisine(String cuisine) {
+     //   return restaurant.stream().filter(restaurant -> restaurant.getCuisine().equals(cuisine)).findFirst().get();
+    //}
 }

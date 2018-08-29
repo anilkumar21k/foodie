@@ -4,7 +4,9 @@
 <head th:replace="fragments :: head"></head>
 <body  class="container">
 
-<h1 th:text="'Hello, ' + ${user.username} + ', welcome to Foodie.com'"></h1>
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="'Hello, ' + ${user.username} + ', Welcome to Foodie.com'"></h1>
 
 </body>
 </html>

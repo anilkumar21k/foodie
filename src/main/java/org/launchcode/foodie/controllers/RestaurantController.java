@@ -11,7 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 @Controller
 @RequestMapping("restaurant")
@@ -23,13 +28,19 @@ public class RestaurantController {
     @Autowired
     private CuisineDao cuisineDao;
 
-    @RequestMapping(value ="")
+    @RequestMapping(value="")
+    public String homePage() {
+
+        return "restaurant/home";
+    }
+
+    @RequestMapping(value ="list")
     public String index(Model model) {
 
         model.addAttribute("restaurants", restaurantDao.findAll());
         model.addAttribute("title", "Welcome to Foodie.com");
 
-        return "restaurant/index";
+        return "restaurant/list";
     }
 
     @RequestMapping(value="add", method = RequestMethod.GET)
@@ -51,5 +62,51 @@ public class RestaurantController {
         newRestaurant.setCuisine(qisine);
         restaurantDao.save(newRestaurant);
         return "redirect:";
+    }
+
+    @RequestMapping(value="home", method = RequestMethod.POST)
+    //@ResponseBody
+    public String searchRestaurant(Model model, @RequestParam String searchTerm) {
+        //String searchTerm = request.getParameter("searchTerm");
+        System.out.println(searchTerm);
+        List<Restaurant> sameAddresses = restaurantDao.findByAddressContaining(searchTerm);
+        model.addAttribute("sameAddresses", sameAddresses );
+
+        return "restaurant/search";
+
+    }
+
+    /*@RequestMapping(value="list", method = RequestMethod.POST)
+
+    public String searchRestaurantByCuisine(Model model, @RequestParam int cuisineId) {
+        //String searchTerm = request.getParameter("searchTerm");
+        System.out.println(cuisineId);
+        List<Restaurant> byCuisines = restaurantDao.findByCuisine(cuisineId);
+        model.addAttribute("byCuisines", byCuisines);
+
+        return "restaurant/search";
+
+    } */
+
+/*
+    @RequestMapping(value = "home", method = RequestMethod.POST)
+    public String search(Model model, @ModelAttribute @Valid Restaurant restaurant,) {
+        List<Restaurant> result = restaurantDao.findByAddress(restaurant.getAddress());
+        if (result.contains(restaurant.getAddress())) {
+            model.addAttribute("restaurant", "restaurant");
+            restaurantDao.save(restaurant);
+
+        }
+        return "restaurant/list";
+    } */
+
+    @RequestMapping(value = "cuisine", method = RequestMethod.GET)
+    public String cuisine(Model model, @RequestParam int id) {
+
+        Cuisine q = cuisineDao.findOne(id);
+        List<Restaurant> restaurants = q.getRestaurants();
+        model.addAttribute("restaurants", restaurants);
+        model.addAttribute("title", "Restaurants with Cuisine: " + q.getName());
+        return "restaurant/list";
     }
 }

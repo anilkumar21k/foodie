@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+
+</head>
+<body class="container">
+<style>
+body {
+    background-color: linen;
+}
+
+h1 {
+    color: maroon;
+    margin-left: 5px;
+}
+
+h5 {
+    color: blue;
+    margin-left: 10x;
+   }
+</style>
+
+<h1>Welcome to Foodie.com</h1>
+
+<p>
+<h5> Foodie.com brings the best dining experience to you in your locality a click away from you.
+    You can search restaurants, see restaurant reviews,
+    post reviews, check menu, make reservations or place orders for carryout or delivery on your phone. </h5>
+</p>
+<h3>Search restaurants near you</h3>
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" style="max-width:600px;" action="/restaurant/home">
+<div class="form-group">
+
+    <input type="text" name="searchTerm"/>
+    <select name="SearchTerm:">
+        <option value="City">City</option>
+        <option value="Zipcode">Zip Code</option>
+    </select>
+</div>
+    <input type="submit" value = "Search"/>
+</form>
+</body>
+</html>

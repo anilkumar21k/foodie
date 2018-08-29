@@ -1,6 +1,7 @@
 package org.launchcode.foodie.controllers;
 
 import org.launchcode.foodie.models.Cuisine;
+import org.launchcode.foodie.models.Restaurant;
 import org.launchcode.foodie.models.data.CuisineDao;
 import org.launchcode.foodie.models.data.RestaurantDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("cuisine")
@@ -48,7 +51,7 @@ public class CuisineController {
         return "redirect:";
     }
 
-    @RequestMapping(value="view/{cuisineId)", method = RequestMethod.GET)
+   /* @RequestMapping(value="view/{cuisineId)", method = RequestMethod.GET)
     public String searchByCuisine(Model model, @PathVariable int cuisineId){
         Cuisine cuisine = cuisineDao.findOne(cuisineId);
         model.addAttribute("title", cuisine.getName());
@@ -56,8 +59,18 @@ public class CuisineController {
         model.addAttribute("cuisineId", cuisine.getId());
 
         return "cuisine/view";
-    }
+    } */
 
+
+  /* @RequestMapping(value="")
+   public String add(Model model, @ModelAttribute Restaurant restaurant, HttpServletResponse response ){
+       List<Restaurant> u = cuisineDao.findByCuisine(searchTerm);
+       if(u.isEmpty()) {
+           model.addAttribute("message","Invalid Username" );
+           model.addAttribute("title", "Login");
+           return "user/login";
+       }
+   }*/
 
 
 

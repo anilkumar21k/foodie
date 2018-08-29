@@ -12,7 +12,12 @@
 <p th:unless="${cuisines} and ${cuisines.size()}">no cuisines :(</p>
 
 <ul>
-    <li th:each="cuisine: ${cuisines}"><div th:text="${cuisine.name}"></div></li>
+    <li th:each="cuisine : ${cuisines}">
+     <!--   <a th:href="'/cuisine/index/' + ${cuisine.id}" th:text="${cuisine.name}"></a> -->
+        <a th:href="'/restaurant/cuisine?id=' + ${cuisine.id}" th:text="${cuisine.name}"></a>
+    </li>
+
+    <!-- <li th:each="cuisine: ${cuisines}"><div th:text="${cuisine.name}"></div></li> -->
 </ul>
 
 </body>

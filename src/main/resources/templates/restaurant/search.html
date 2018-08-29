@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${sameAddress} and ${sameAddresses.size()}"></p>
+
+
+
+
+<table class="table" method="get">
+
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Cuisine</th>
+    </tr>
+
+    <tr th:each="sameAddress : ${sameAddresses}">
+        <td th:text="${sameAddress.name}"></td>
+        <td th:text="${sameAddress.Address}"></td>
+        <td th:text="${sameAddress.cuisine.name}"></td>
+    </tr>
+
+</table>
+
+<!--<a href="/restaurant/add">Add Restaurant</a> | -->
+
+
+</body>
+</html>

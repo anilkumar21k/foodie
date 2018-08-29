@@ -59,6 +59,13 @@ public class UserController {
             if (!sameName.isEmpty()) {
                 model.addAttribute("message", "Username is taken, please select another one");
             }
+
+            String b= user.getUsername();
+
+            if((b.length())<5){
+                model.addAttribute("message", "Username should at least have five characters.");
+
+            }
             return "user/add";
         }
     }
@@ -88,7 +95,7 @@ public class UserController {
                 Cookie c = new Cookie("user", user.getUsername());
                 c.setPath("/");
                 response.addCookie(c);
-                return "redirect:/restaurant";
+                return "user/index";
 
             } else {
                 model.addAttribute("message","Invalid Password");

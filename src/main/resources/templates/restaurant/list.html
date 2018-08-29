@@ -20,6 +20,7 @@
     </tr>
 
     <tr th:each="restaurant : ${restaurants}">
+
         <td th:text="${restaurant.name}"></td>
         <td th:text="${restaurant.address}"></td>
         <td th:text="${restaurant.cuisine.name}"></td>
@@ -27,7 +28,9 @@
 
 </table>
 
-<a href="/restaurant/add">Add Restaurant</a> |
+
+
+<!--<a href="/restaurant/add">Add Restaurant</a> | -->
 
 
 </body>
