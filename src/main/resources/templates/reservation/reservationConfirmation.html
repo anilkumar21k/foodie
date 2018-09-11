@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class = "container">
+
+    <h1 th:text="${title}">Default Title</h1>
+    <nav th:replace="fragments :: navigation"></nav>
+  <!--  <h4 th:text="Dear ${customer_name}, your reservation for ${time} and ${date} has been confirmed, thank you"></h4>
+-->
+    <h4 Your reservation has been confirmed, thankyou </h4>
+</body>
+</html>

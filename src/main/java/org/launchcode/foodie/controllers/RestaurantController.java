@@ -76,6 +76,7 @@ public class RestaurantController {
 
     }
 
+
     /*@RequestMapping(value="list", method = RequestMethod.POST)
 
     public String searchRestaurantByCuisine(Model model, @RequestParam int cuisineId) {

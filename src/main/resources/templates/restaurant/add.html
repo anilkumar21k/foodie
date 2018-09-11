@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
@@ -27,6 +27,20 @@
         </select>
     </div>
 
+    <div class="form-group">
+        <label th:for="menu">Menu</label>
+        <input class="form-control" th:field="*{menu}" />
+        <span th:errors="*{menu}" class="error"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label th:for="reserve">Reserve</label>
+        <!--<input <a th:href="reserve"> </a>class="form-control" th:field="*{reserve}" /> -->
+        <span th:errors="*{reserve}" class="error"></span>
+    </div>
+
+    <!-- <a th:href="'/restaurant/cuisine?id=' + ${cuisine.id}" th:text="${cuisine.name}"></a> -->
 
 
 
@@ -34,4 +48,4 @@
 </form>
 
 </body>
-</html> -->
+</html>

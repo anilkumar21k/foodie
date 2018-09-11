@@ -17,16 +17,24 @@
         <th>Name</th>
         <th>Address</th>
         <th>Cuisine</th>
+        <th>Menu</th>
+        <th>Reserve</th>
     </tr>
+
+
+
 
     <tr th:each="restaurant : ${restaurants}">
 
         <td th:text="${restaurant.name}"></td>
         <td th:text="${restaurant.address}"></td>
         <td th:text="${restaurant.cuisine.name}"></td>
+        <td> <a th:href="${restaurant.menu}">Menu</a></td>
+        <td> <a th:href="@{/reservation}">Reserve</a></td>
     </tr>
 
 </table>
+
 
 
 

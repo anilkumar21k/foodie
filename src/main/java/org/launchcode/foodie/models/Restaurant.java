@@ -22,15 +22,23 @@ public class Restaurant {
     @Size(min=3, max=200)
     private String address;
 
+    private String menu;
+
+    private String reserve;
+
     @ManyToOne
     private Cuisine cuisine;
    /* @ManyToMany(mappedBy="restaurants")
     private List<Cuisine> cuisines; */
 
-    public Restaurant(String name, String address) {
+    public Restaurant(String name, String address, String menu, String reserve) {
         this.name = name;
         this.address = address;
+        this.menu = menu;
+        this.reserve = reserve;
     }
+
+
 
     public Restaurant() {}
 
@@ -62,7 +70,23 @@ public class Restaurant {
         this.cuisine = qisine;
     }
 
+    public String getMenu() {
+        return menu;
+    }
+
+    public void setMenu(String menu) {
+        this.menu = menu;
+    }
+
+    public String getReserve() {
+        return reserve;
+    }
+
+    public void setReserve(String reserve) {
+        this.reserve = reserve;
+    }
+
     //public Restaurant getByCuisine(String cuisine) {
-     //   return restaurant.stream().filter(restaurant -> restaurant.getCuisine().equals(cuisine)).findFirst().get();
+    //   return restaurant.stream().filter(restaurant -> restaurant.getCuisine().equals(cuisine)).findFirst().get();
     //}
 }
