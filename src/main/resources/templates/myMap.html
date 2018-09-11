@@ -24,13 +24,9 @@
                 Zoom:8,
                 center:{lat: 38.6631, lng:-90.5771}
             }
+            var map = new
+            google.maps.Map(document.getElementsById('map'), options);
 
-            var map = new google.maps.Map(document.getElementById('map'), options);
-
-            var marker =  new google.maps.Marker({
-                position:{lat: 38.6642, lng:-90.5771 }
-                map:map
-            });
         }
     </script>
 

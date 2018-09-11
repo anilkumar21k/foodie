@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -107,6 +108,7 @@ public class UserController {
         }
 
     @RequestMapping(value = "logout")
+    @ResponseBody
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookies = request.getCookies();
         if(cookies != null) {
@@ -116,7 +118,7 @@ public class UserController {
                 response.addCookie(c);
             }
         }
-        return  "user/login";
+        return  "You are logged out";
     }
 
 }

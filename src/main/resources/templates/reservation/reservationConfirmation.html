@@ -5,8 +5,9 @@
 
     <h1 th:text="${title}">Default Title</h1>
     <nav th:replace="fragments :: navigation"></nav>
-  <!--  <h4 th:text="Dear ${customer_name}, your reservation for ${time} and ${date} has been confirmed, thank you"></h4>
--->
-    <h4 Your reservation has been confirmed, thankyou </h4>
+   <!-- <h4 th:text="Dear ${customer_name}, your reservation for ${time} and ${date} has been confirmed, thank you"></h4> -->
+
+   <!-- <h4> Your reservation has been confirmed, thankyou </h4> -->
+    <h3 th:text="'Dear, ' + ${reservation.customer_name} + ', your reservation for ' + ${reservation.time} + ' and ' + ${reservation.date} + ' has been confirmed. Thank you'"></h3>
 </body>
 </html>

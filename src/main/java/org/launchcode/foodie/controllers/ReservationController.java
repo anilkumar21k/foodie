@@ -30,23 +30,23 @@ public class ReservationController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String displayReservationForm(Model model){
-        model.addAttribute("title", "Make Reservation");
+        model.addAttribute("title", "Add Reservation");
         model.addAttribute(new Reservation());
 
         return "reservation/reservationForm";
     }
 
-   @RequestMapping(value="", method = RequestMethod.POST)
+   @RequestMapping(value= "reservationForm", method = RequestMethod.POST)
     public String processReservationForm(@ModelAttribute @Valid Reservation newReservation,
                                          Errors errors,  Model model) {
-       if (errors.hasErrors()) {
-           model.addAttribute("title", "Make Reservation");
+      /* if (errors.hasErrors()) {
+           model.addAttribute("title", "Add Reservation");
            return "reservation/reservationForm";
-       }
+       } */
 
 
        reservationDao.save(newReservation);
-       return "reservation/reservationForm";
+       return "reservation/reservationConfirmation";
    }
 }
 

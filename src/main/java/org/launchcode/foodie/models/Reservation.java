@@ -18,7 +18,7 @@ public class Reservation {
         private String customer_name;
 
         @NotNull
-        @Size(min=3, max=200)
+        @Size(min=9, max=200)
         private String phone;
 
         private String time;
